@@ -8,7 +8,7 @@ public class Planet{
     public double yyVel; //its current velocity in y direction
     public double mass;
     public String imgFileName; //the name of the file that corresponds to the image that depicts the planet.
-    static final double G = 6.67e-11;//It is good practice to declare any constants as a ‘static final’ variable in your class, and to use that variable anytime you wish to use the constant.
+    private static final double G = 6.67e-11;//It is good practice to declare any constants as a ‘static final’ variable in your class, and to use that variable anytime you wish to use the constant.
     // signature of the first constructor
     public Planet(double xP, double yP, double xV, double yV, double m, String img){
         xxPos = xP;
@@ -91,14 +91,13 @@ public class Planet{
     }
     //determines how much the forces exerted on the planet will cause that planet to accelerate, 
     //and the resulting change in the planet’s velocity and position in a small period of time dt
-    public Planet update(double dt, double fx, double fy){
+    public void update(double dt, double fx, double fy){
         double ax = fx / this.mass;
         double ay = fy / this.mass;
         this.xxVel = this.xxVel + dt * ax;
         this.yyVel = this.yyVel + dt * ay;
         this.xxPos = this.xxPos + dt * this.xxVel;
         this.yyPos = this.yyPos + dt * this.yyVel;
-        return this;
 
     }
     public void draw(){
